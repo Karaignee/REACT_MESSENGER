@@ -1,10 +1,14 @@
-import Greet from './greet';
+import MessageBox from './components/MessageBox'
+import MessageBox from './components/MessageList'
+
 
 class Main extends React.Component {
 	render() {
 	return (
-		< Greet/>
-
+		<div className="container">
+		<MessageBox />
+		<MessageList />
+		</div> 
 		);
 	}
 }

@@ -5,10 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css"/>
+
 </head>
 <body>
 
-<%= yield %>
+	<section class="mw5 mw7-ns center bg-light-gray pa3 ph5-ns">
+  <h1 class="mt0">Testing React and Rails</h1>
+  <%= yield %>
+  <p class="lh-copy measure">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  </p>
+</section>
+
+
 
 </body>
 </html>
