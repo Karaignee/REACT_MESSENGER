@@ -10,6 +10,22 @@
 </head>
 <body>
 
+	 <div class="right">
+     <% if user_signed_in? %>
+       Welcome <%= current_user.email %>,
+       <%= link_to 'logout', destroy_user_session_path, method: 'DELETE' %>
+     <% else  %>
+       Please
+         <%= link_to 'login', new_user_session_path %>
+         or
+         <%= link_to 'signup', new_user_registration_path %>
+     <% end %>
+   </div>
+
+	 <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+
+
 	<section class="mw5 mw7-ns center bg-light-gray pa3 ph5-ns">
   <h1 class="mt0">Testing React and Rails</h1>
   <%= yield %>

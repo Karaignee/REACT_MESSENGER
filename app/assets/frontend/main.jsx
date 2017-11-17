@@ -31,10 +31,13 @@ class Main extends React.Component {
 }
 
 let documentReady = () => {
-	React.render(
-	<Main />,
-	document.getElementById('react')
-	);
-};
-
-$(documentReady);
+	let reactNode = document.getElementById('react');
+	if (reactNode) {
+		console.log(reactNode);
+		// // render directly... or
+       // R.render(<h1>Hello World</h1>,reactNode);
+  		// render from a component (inline or separate file)
+     R.render(<Main />, reactNode);
+   }
+  }		 
+  $(documentReady);		
