@@ -1,11 +1,13 @@
 export default class Message extends React.Component {
    render() {
     return (
-      <div>
-        <span>this is a message</span>
-        <span>from Karen</span>
+    	<li className="collection-item avatar">
+    		<i className="material-icons circle">person_pin</i>
+	      	<span className="title">{this.props.name}</span>
+	      	<p>{this.props.body}</p>
+	     </li>
 
-      </div>
     );
   }
 }
+

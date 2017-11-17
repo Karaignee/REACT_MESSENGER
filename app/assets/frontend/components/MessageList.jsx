@@ -1,13 +1,11 @@
 export default class MessageList extends React.Component {
 render() {
+	let messages = this.props.messages.map(message => <Message {...message} />)
 	return (
 		<div>
-		<ul>
-		<li>One...</li>
-		<li>Two...</li>		
-		<li>Three...</li>
-		<li>Four...</li>
-		</ul>
+		<ul className="collection">
+		{messages}
+		 </ul>
 		</div> 
 		);
 	}
