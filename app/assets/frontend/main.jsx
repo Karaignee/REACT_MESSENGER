@@ -13,12 +13,7 @@ class Main extends React.Component {
 		  this.state = { messageList: [] };
    }
 
-   addMessage(newMessage) {
- +    let newMessagesList = this.state.messagesList;
- +    newMessagesList.unshift({id: Date.now(), name: 'Guest', body: newMessage})
- +    // rerender using the new tweetsList state object...
- +    this.setState({messagesList: newMessagesList, edit: false});
- +  }
+
 class Main extends React.Component {
 	render() {
 	return (
@@ -29,6 +24,32 @@ class Main extends React.Component {
 		);
 	}
 }
+
+ addMessage(newMessage) {
+    $.ajax({
+      url: "/Messages",
+      method: "POST",
+      data: { Message: { body: newMessage } },
+      dataType: "json"
+    })
+    .success(Message => {
+      let newMessagesList = this.state.MessagesList;
+      newMessagesList.unshift(Message)
+      // rerender using the new MessagesList state object...
+      this.setState({MessagesList: newMessagesList, edit: false});
+    })
+    .error(error => console.log(error))
+  }
+
+  componentDidMount() {
+     $.ajax({
+       url: "/messages",
+       dataType: "json"
+     })
+     .success(data => this.setState({MessagesList: data}))
+     .error(error => console.log(error))
+   }
+
 
 let documentReady = () => {
 	let reactNode = document.getElementById('react');
