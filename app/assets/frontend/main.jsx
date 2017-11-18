@@ -25,6 +25,18 @@ class Main extends React.Component {
 	}
 }
 
+  formattedMessages(newMessageList) {
+     let formattedMessageList = newMessageList.map(Message => {
+       Message.formattedDate = moment(Message.created_at).fromNow();
+       return Message;
+     })
+ 
+     return {
+       MessagesList: formattedMessageList
+     };
+   }
+
+
  addMessage(newMessage) {
     $.ajax({
       url: "/Messages",
@@ -35,8 +47,8 @@ class Main extends React.Component {
     .success(Message => {
       let newMessagesList = this.state.MessagesList;
       newMessagesList.unshift(Message)
-      // rerender using the new MessagesList state object...
-      this.setState({MessagesList: newMessagesList, edit: false});
+       this.setState(this.formattedTweets(newTweetsList));
+     
     })
     .error(error => console.log(error))
   }
@@ -46,7 +58,7 @@ class Main extends React.Component {
        url: "/messages",
        dataType: "json"
      })
-     .success(data => this.setState({MessagesList: data}))
+     .success(data => this.setState((this.formattedMessages(data)))
      .error(error => console.log(error))
    }
 
